@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffc0cb, #ffe6f0);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* layering */
+h1, .footer {
+    position: relative;
+    z-index: 2;
+}
+
+/* Main text */
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 95px;
+    color: #d1005d;
+    text-shadow: 0 0 25px rgba(255,0,100,0.6);
+    margin: 0;
+}
+
+/* Footer */
+.footer {
+    position: absolute;
+    bottom: 20px;
+    font-size: 32px;
+    color: #6b0040;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+/* Balloons */
+.balloon {
+    position: absolute;
+    width: 60px;
+    height: 75px;
+    border-radius: 50%;
+    animation: float 7s infinite ease-in-out;
+    z-index: 0;
+}
+
+.balloon:after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 60px;
+    background: #555;
+    top: 75px;
+    left: 29px;
+}
+
+@keyframes float {
+    0% {transform: translateY(100vh);}
+    100% {transform: translateY(-200px);}
+}
+
+/* Hearts */
+.heart {
+    position: absolute;
+    font-size: 25px;
+    animation: floatHeart 6s linear infinite;
+    opacity: 0.7;
+    z-index: 0;
+}
+
+@keyframes floatHeart {
+    0% {transform: translateY(100vh);}
+    100% {transform: translateY(-100px);}
+}
+
+/* 🎁 ULTRA REALISTIC GIFT */
+.gift-real {
+    position: relative;
+    width: 170px;
+    height: 170px;
+    cursor: pointer;
+    perspective: 1200px;
+}
+
+/* box */
+.box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, #ff4d6d, #990026);
+    border-radius: 15px;
+    box-shadow: 
+        inset -10px -10px 20px rgba(0,0,0,0.5),
+        inset 5px 5px 15px rgba(255,255,255,0.25),
+        0 20px 30px rgba(0,0,0,0.5);
+}
+
+/* shine */
+.box::after {
+    content: "";
+    position: absolute;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0.3), transparent);
+    border-radius: 15px;
+}
+
+/* vertical ribbon */
+.box::before {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 100%;
+    background: linear-gradient(145deg, gold, #b89600);
+    left: 73px;
+}
+
+/* horizontal ribbon */
+.gift-real::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 24px;
+    background: linear-gradient(145deg, gold, #b89600);
+    top: 73px;
+    z-index: 2;
+}
+
+/* lid */
+.lid {
+    position: absolute;
+    width: 180px;
+    height: 55px;
+    background: linear-gradient(145deg, #ffd700, #b89600);
+    top: -35px;
+    left: -5px;
+    border-radius: 12px;
+    transform-origin: left bottom;
+    transition: transform 0.7s ease;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+}
+
+/* inside */
+.inside {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    color: white;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.6s;
+}
+
+/* open animation */
+.gift-real.open .lid {
+    transform: rotate(-65deg) translateY(-30px);
+}
+
+.gift-real.open .inside {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.2);
+}
+
+/* positioning */
+.gift-box {
+    position: absolute;
+    bottom: 120px;
+    text-align: center;
+    z-index: 1;
+}
+
+/* text between gifts */
+.open-text {
+    position: absolute;
+    bottom: 300px;
+    font-size: 30px;
+    color: #ff0066;
+    font-weight: bold;
+    z-index: 2;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Happy birthday to you 🎉</h1>
+
+<!-- Balloons -->
+<div class="balloon" style="left:10%; background:#ff4d6d;"></div>
+<div class="balloon" style="left:25%; background:#ffcc00; animation-delay:1s;"></div>
+<div class="balloon" style="left:50%; background:#6a5acd; animation-delay:2s;"></div>
+<div class="balloon" style="left:75%; background:#00c2ff; animation-delay:1.5s;"></div>
+<div class="balloon" style="left:90%; background:#ff69b4; animation-delay:3s;"></div>
+
+<!-- Hearts -->
+<div class="heart" style="left:15%;">💖</div>
+<div class="heart" style="left:35%; animation-delay:2s;">💖</div>
+<div class="heart" style="left:55%; animation-delay:4s;">💖</div>
+<div class="heart" style="left:75%; animation-delay:1s;">💖</div>
+
+<!-- Text -->
+<div class="open-text">Open the gifts 🎁 ♥️</div>
+
+<!-- Gifts -->
+<div class="gift-box" style="left:20%;">
+    <div class="gift-real" onclick="this.classList.toggle('open')">
+        <div class="lid"></div>
+        <div class="box"></div>
+        <div class="inside">🎉 Surprise! 🎂</div>
+    </div>
+</div>
+
+<div class="gift-box" style="left:70%;">
+    <div class="gift-real" onclick="this.classList.toggle('open')">
+        <div class="lid"></div>
+        <div class="box"></div>
+        <div class="inside">💖 For you!</div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    Made by Anes Guessab ✨
+</div>
+
+</body>
+</html>
